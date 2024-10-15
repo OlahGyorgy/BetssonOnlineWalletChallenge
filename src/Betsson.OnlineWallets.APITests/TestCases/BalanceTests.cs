@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Betsson.OnlineWallets.APITests.basicSteps;
 using NUnit.Framework;
 
 namespace Betsson.OnlineWallets.APITests.TestCases;
