@@ -8,8 +8,8 @@ public class BaseAsserts
 {
     public static void amountAssert (RestResponse<BalanceResponse> response, double expectedAmount)
     {
-        var actualAmount = response.Data.Amount;
         statusAssert(response, HttpStatusCode.OK);
+        var actualAmount = response.Data.Amount;
         Assert.That(actualAmount, Is.EqualTo(expectedAmount).Within(0.000001),$"The actual amount: {actualAmount} is not what expected {expectedAmount}");
     }
     public static void statusAssert(RestResponse<BalanceResponse> response, HttpStatusCode expectedStatusCode)

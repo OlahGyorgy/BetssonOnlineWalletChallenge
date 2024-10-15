@@ -12,8 +12,8 @@ public class ApiTestLogger
                         .WriteTo.Console()
                         .CreateLogger();
                 
-                Log.Information("Sending request to {BaseUrl}{Url} ", Endpoints.BaseEndpointUrl,request.Resource);
-                Log.Information("Response: {StatusCode}, {ResponseContent}", response.StatusCode, response.Content);
+                Log.Information("Request: {Method} {BaseUrl}{Url} ", request.Method,Endpoints.BaseEndpointUrl,request.Resource);
+                Log.Information("Response: {StatusCode}, {ResponseContent} \n", response.StatusCode, response.Content);
         }
         
         public static void PostMethodLogger(RestRequest request, object requestBody,RestResponse response)
@@ -22,7 +22,7 @@ public class ApiTestLogger
                         .WriteTo.Console()
                         .CreateLogger();
                 
-                Log.Information("Sending request to {BaseUrl}{Url} \n body: {body}", Endpoints.BaseEndpointUrl,request.Resource,requestBody);
-                Log.Information("Response: {StatusCode}, {ResponseContent}", response.StatusCode, response.Content);
+                Log.Information("Request: {Method} {BaseUrl}{Url} \n body: {body}", request.Method,Endpoints.BaseEndpointUrl,request.Resource,requestBody);
+                Log.Information("Response: {StatusCode}, {ResponseContent} \n", response.StatusCode, response.Content);
         }
 }
