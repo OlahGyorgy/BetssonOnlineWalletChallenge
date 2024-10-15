@@ -1,5 +1,6 @@
-﻿using Betsson.OnlineWallets.APITests.Logging;
-using Betsson.OnlineWallets.APITests.Models;
+﻿using Betsson.OnlineWallets.APITests.BasicSteps;
+using Betsson.OnlineWallets.APITests.Logging;
+using Betsson.OnlineWallets.APITests.TestData;
 using RestSharp;
 
 
@@ -15,10 +16,10 @@ public class GetBalance
 
         
         RestClient _client = ApiClient.GetClient();
-        var request = new RestRequest("/onlinewallet/balance", Method.Get);
+        var request = new RestRequest(Endpoints.BalanceEndpointUrl, Method.Get);
         var response = await _client.ExecuteAsync<BalanceResponse>(request);
 
-        RestLogger.APILogger(request,response);
+        ApiTestLogger.GetMethodLogger(request,response);
         
         return response;
     }
