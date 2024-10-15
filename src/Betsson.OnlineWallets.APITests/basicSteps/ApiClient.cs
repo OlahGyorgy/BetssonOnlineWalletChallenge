@@ -1,4 +1,4 @@
-﻿using Betsson.OnlineWallets.APITests.TestData;
+using Betsson.OnlineWallets.APITests.TestData;
 using RestSharp;
 
 namespace Betsson.OnlineWallets.APITests.BasicSteps;
