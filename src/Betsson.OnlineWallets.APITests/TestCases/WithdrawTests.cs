@@ -1,6 +1,8 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using Betsson.OnlineWallets.APITests.Asserts;
 using Betsson.OnlineWallets.APITests.basicSteps;
+using Betsson.OnlineWallets.APITests.TestData;
 using NUnit.Framework;
 
 namespace Betsson.OnlineWallets.APITests.TestCases;
@@ -23,10 +25,13 @@ public class WithdrawTests
     [Test]
     public async Task PostWithdrawBalance_OK()
     {
-        await _depositEndpoint.PostDepositAsync(10.999);
+        double randomValue = TestDataFactory.GetRandomDouble();
+        await _depositEndpoint.PostDepositAsync(randomValue);
         
-        var response = await _withdrawEndpoint.PostWithdrawAsync(10.999);
-        BaseAsserts.statusAssert(response, HttpStatusCode.OK);
+        var stopwatch = Stopwatch.StartNew();
+        var response = await _withdrawEndpoint.PostWithdrawAsync(randomValue);
+        stopwatch.Stop();
+        BaseAsserts.statusAssert(response, HttpStatusCode.OK,stopwatch,400);
     }
     
 

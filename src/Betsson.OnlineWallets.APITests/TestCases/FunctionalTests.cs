@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using Betsson.OnlineWallets.APITests.Asserts;
 using Betsson.OnlineWallets.APITests.basicSteps;
+using Betsson.OnlineWallets.APITests.TestData;
 using NUnit.Framework;
 
 namespace Betsson.OnlineWallets.APITests.TestCases;
@@ -25,7 +26,7 @@ public class FunctionalTests
     [Test]
     public async Task OK_DepositsThenWithdraw()
     {
-        double depositAmount = 13.134;
+        double depositAmount = TestDataFactory.GetRandomDouble();
         double expectedBalance = _initialBalance + depositAmount;
         
         
@@ -55,7 +56,7 @@ public class FunctionalTests
     public async Task ERROR_InsufficientBalance()
     {
 
-        double creditAmount = 1.1;
+        double creditAmount = TestDataFactory.GetRandomDouble();
         double withdrawAmount = _initialBalance + creditAmount;
         
         
