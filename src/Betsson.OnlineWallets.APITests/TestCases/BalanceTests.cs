@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Betsson.OnlineWallets.APITests.Asserts;
 using Betsson.OnlineWallets.APITests.basicSteps;
 using NUnit.Framework;
 
@@ -19,10 +20,10 @@ public class BalanceTests
 
     
     [Test]
-    public async Task GetBalance()
+    public async Task GetBalance_OK()
     {
         var response = await _balanceEndpoint.GetBalanceAsync();
-        Assert.That(response.StatusCode.Equals( HttpStatusCode.OK));
+        BaseAsserts.statusAssert(response, HttpStatusCode.OK);
     }
 }
 
