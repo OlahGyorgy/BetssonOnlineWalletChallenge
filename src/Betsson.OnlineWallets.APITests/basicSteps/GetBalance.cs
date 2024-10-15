@@ -23,6 +23,12 @@ public class GetBalance
         
         return response;
     }
+
+    public async Task<double> GetBalanceAmountAsync()
+    {
+        var response =  GetBalanceAsync();
+        return response.Result.Data.Amount;
+    }
     
 
 }

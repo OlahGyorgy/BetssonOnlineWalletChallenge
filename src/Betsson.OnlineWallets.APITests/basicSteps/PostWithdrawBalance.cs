@@ -7,7 +7,22 @@ namespace Betsson.OnlineWallets.APITests.basicSteps;
 
 public class PostWithdrawBalance
 {
-    public async Task<RestResponse<BalanceResponse>> PostWithdrawAsync(decimal amount)
+    public async Task<RestResponse<BalanceResponse>> PostWithdrawAsync(double amount)
+    {  
+
+        
+        RestClient _client = ApiClient.GetClient();
+        var request = new RestRequest(Endpoints.WithdrawEndpointUrl, Method.Post);
+        var requestBody = new { amount };
+        request.AddJsonBody(requestBody);
+        var response = await _client.ExecuteAsync<BalanceResponse>(request);
+        
+        ApiTestLogger.PostMethodLogger(request,requestBody,response);
+        
+        return response;
+    }
+    
+    public async Task<RestResponse<BalanceResponse>> PostWithdrawAsync(String amount)
     {  
 
         
